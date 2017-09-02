@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TestApplication.BL.Builder.Abstract;
 using TestApplication.BL.Helpers.Abstract;
 using TestApplication.BL.Managers.Abstract;
+using TestApplication.BL.Model;
 using TestApplication.BL.Models;
 
 namespace TestApplication.BL.Builder.Concrete
@@ -33,10 +34,13 @@ namespace TestApplication.BL.Builder.Concrete
             }
             else
             {
+                HashSet <Point> temp = new HashSet<Point>();
                 for (int i = 0; i < 2; i++)
                 {
-                    model.CoordinatesList = model.CoordinatesList.Concat(new[] { coordinatesManager.GetRandomCoordinate() });
+
+                    temp.Add(coordinatesManager.GetRandomCoordinate());
                 }
+                model.CoordinatesList = temp;
             }
             return model;
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestApplication.BL.Model
 {
-    public struct Point
+    public class Point
     {
         public int X;
         public int Y;

@@ -24,12 +24,13 @@ namespace TestApplication.BL.Managers.Concrete
         public IEnumerable<Point> GetSavedCoordinates()
         {
             XDocument xdoc = XDocument.Load(xmlFilePath);
-            return from xe in xdoc.Element("Points").Elements("Point")
-                        select new Point
-                        {
-                            X = Convert.ToInt32(xe.Element("X").Value),
-                            Y = Convert.ToInt32(xe.Element("Y").Value)
-                        };
+            var a = from xe in xdoc.Element("Points").Elements("Point")
+                    select new Point
+                    {
+                        X = Convert.ToInt32(xe.Element("X").Value),
+                        Y = Convert.ToInt32(xe.Element("Y").Value)
+                    };
+            return a;
         }
 
         public bool SaveOrUpdatePoints(IEnumerable<Point> pointToProceed)

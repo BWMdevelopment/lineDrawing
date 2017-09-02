@@ -7,6 +7,7 @@ using TestApplication.BL.Helpers.Abstract;
 using TestApplication.BL.Managers.Abstract;
 using TestApplication.BL.Model;
 using TestApplication.BL.Models;
+using TestApplication.Models;
 
 namespace TestApplication.Controllers
 {
@@ -26,16 +27,17 @@ namespace TestApplication.Controllers
         {
             return View();
         }
-
-        public JsonResult SaveSegment(IEnumerable<Point> pointsList)
+        public JsonResult SaveSegment(List<PointModel> pointsList)
         {
-            Boolean result = coordinatesManager.SaveOrUpdatePoints(pointsList);
-            return Json(result);
+            List<Point> temp = new List<Point>();
+            pointsList.ForEach(x => temp.Add(new Point { X = x.X, Y = x.Y }));
+            Boolean result = coordinatesManager.SaveOrUpdatePoints(temp);
+            return Json(null);
         }
 
-        public JsonResult UpdateSegment()
+        public JsonResult GetSegment()
         {
-            return Json(elementBuilder.BuildElement());
+            return Json(elementBuilder.BuildElement(), JsonRequestBehavior.AllowGet);
         }
     }
 }
