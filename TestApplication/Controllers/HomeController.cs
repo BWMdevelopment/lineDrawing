@@ -1,30 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using TestApplication.BL.Builder.Abstract;
+using TestApplication.BL.Builder.Concrete;
+using TestApplication.BL.Helpers.Abstract;
+using TestApplication.BL.Managers.Abstract;
+using TestApplication.BL.Model;
+using TestApplication.BL.Models;
 
 namespace TestApplication.Controllers
 {
     public class HomeController : Controller
     {
+        ICoordinatesManager coordinatesManager;
+        IColorChooseHelper colorChooseHelper;
+        IElementBuilder elementBuilder;
+        public HomeController(ICoordinatesManager coordinatesManagerParam, IColorChooseHelper colorChooseHelperParam)
+        {
+            coordinatesManager = coordinatesManagerParam;
+            colorChooseHelper = colorChooseHelperParam;
+            elementBuilder = new SegmentBuilder(colorChooseHelper, coordinatesManager);
+
+        }
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        public JsonResult SaveSegment(IEnumerable<Point> pointsList)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            Boolean result = coordinatesManager.SaveOrUpdatePoints(pointsList);
+            return Json(result);
         }
 
-        public ActionResult Contact()
+        public JsonResult UpdateSegment()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return Json(elementBuilder.BuildElement());
         }
     }
 }
