@@ -24,7 +24,7 @@
                     self.segmentData.CoordinatesList[i].id = 'element' + (i + 1);
                 };
                 lineService.appendLine(self.segmentData.CoordinatesList);
-            moveService.init(self.segmentData.CoordinatesList);
+                moveService.init(self.segmentData.CoordinatesList);
         });
 
         $rootScope.$on('segmentWereMoved', function (event, data) {
@@ -33,8 +33,8 @@
                     $scope.$apply(function () {
                         self.segmentData.CoordinatesList[i].X = data.position.left;
                         self.segmentData.CoordinatesList[i].Y = data.position.top;
-                        lineService.appendLine(self.segmentData.CoordinatesList);
                     });
+                    lineService.appendLine(self.segmentData.CoordinatesList);
                 }
             }
         });

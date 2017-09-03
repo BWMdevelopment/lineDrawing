@@ -1,0 +1,39 @@
+﻿
+.border {
+    background-color: black;
+    border: 1px solid red;
+}
+.linkButton {
+    background: none !important;
+    color: blue;
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+    border-bottom: 1px solid blue;
+    cursor: pointer;
+}
+
+.infoText {
+    float: left;
+    color: blue
+}
+
+.segmentLine {
+    position: absolute;
+    top: 50px;
+    left: -100px;
+    width: 500px;
+    margin: 0;
+    -webkit-transform: rotateZ(53.1deg);
+    border-width: 1px;
+    border-style: solid;
+    border-image: linear-gradient(to left, rgb(220, 81, 81) 0%,rgb(220, 81, 81) 49%,transparent 50%,transparent 100%) 1
+}
+
+.segmentPoint {
+    border-radius: 5px;
+    width: 10px;
+    background: white;
+    position: absolute;
+    height: 10px;
+}

@@ -38,8 +38,6 @@ namespace TestApplication.BL.Managers.Concrete
         {
             try
             {
-                CreateFileIfNotExists();
-
                 XDocument xdoc = new XDocument();
                 XElement pointsList = new XElement("Points");
 
@@ -56,14 +54,6 @@ namespace TestApplication.BL.Managers.Concrete
             catch (Exception)
             {
                 return false;
-            }
-        }
-
-        private void CreateFileIfNotExists()
-        {
-            if (!File.Exists(xmlFilePath))
-            {
-                File.Create(xmlFilePath);
             }
         }
 

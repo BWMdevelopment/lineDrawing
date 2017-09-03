@@ -1,21 +1,21 @@
 ﻿<body style="padding:0">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <div ng-app="testApp" ng-controller="interfaceController as intCtrl" ng-init="intCtrl.init()" style="background-color:black;border:1px solid red;">
+    <div ng-app="testApp" ng-controller="interfaceController as intCtrl" ng-init="intCtrl.init()" class="border">
         <div style="height:20%;width:100%">
             <div class="row">
-                <div class="col-md-6">
-                    <button ng-click="intCtrl.updateSegment()">Update segment</button>
+                <div class="col-md-6" style="float: left;"> 
+                    <button ng-click="intCtrl.updateSegment()" class="linkButton">Update segment</button>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="float: right;color:blue">
                     first point:<span ng-bind="intCtrl.segmentData.CoordinatesList[0].X">X1</span>;<span ng-bind="intCtrl.segmentData.CoordinatesList[0].Y">Y1</span>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
-                    <button ng-click="intCtrl.saveSegment()">Save segment</button>
+                <div class="col-md-6" style="float: left;">
+                    <button ng-click="intCtrl.saveSegment()"  class="linkButton">Save segment</button>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="float: right;color:blue">
                     second point:<span ng-bind="intCtrl.segmentData.CoordinatesList[1].X">X1</span>;<span ng-bind="intCtrl.segmentData.CoordinatesList[1].Y">Y1</span>
                 </div>
             </div>
@@ -26,14 +26,5 @@
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    <hr id="line" style="
-    position: absolute;
-    top: 50px;
-    left: -100px;
-    width: 500px;
-    margin: 0;
-    -webkit-transform: rotateZ(53.1deg);
-    border-width: 1px;      border-style: solid;
-    border-image: linear-gradient(to left, #ffffff 0%,#ffffff 49%,#000000 50%,#000000 100%) 1;
-">
+    <hr id="line" class="segmentLine">
 </body>
