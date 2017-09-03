@@ -1,42 +1,32 @@
 ﻿angular.module('testApp').service('moveService', ['$rootScope', function ($rootScope) {
 
-    var self = this;
+    var self = {};
     self.elementsList = [];
-    self.borderCoordinates = {
+    self.elementStartOffset = {
         left:0,
-        right:0,
-        top:0,
-        bottom:0
+        top:0
     };
     self.init = function (pointsList) {
-        self.createBorders(pointsList[0]);
+        self.createBorders(pointsList[0].id);
         pointsList.forEach(self.prepearElement);
     };
     self.createBorders = function (id) {
         var element = $('#' + id);
         createLeftTopBorder(element)
-        createRightBottomBorder(element)
-        
-    }
+    };
     createLeftTopBorder = function (element) {
         var offsets = element.offset();
-        self.borderCoordinates.left = offsets.left;
-        self.borderCoordinates.top = offsets.top;
+        self.elementStartOffset.left = offsets.left;
+        self.elementStartOffset.top = offsets.top;
+    };
+    pow2 = function (n) {
+        return n * n;
     }
-    createRightBottomBorder = function (element) {
-        var parent = element.parent();
-        self.borderCoordinates.right = self.borderCoordinates.left + parent.offsetWidth;
-        self.borderCoordinates.bottom = self.borderCoordinates.top + parent.offsetHeight;
+    drawLine = function () {
+        var dist = Math.sqrt(pow2(p1.x - p2.x) + pow2(p1.y - p2.y));
     };
-    IsElementInBorders = function (element) {
-        var a = element.pageX > self.borderCoordinates.left;
-
-        var a = element.pageX < self.borderCoordinates.right;
-        var a = element.pageY > self.borderCoordinates.top;
-        var a = element.pageY < self.borderCoordinates.bottom;
-    };
-    self.prepearElement = function (id, index) {
-        var ball = document.getElementById(id);
+    self.prepearElement = function (element, index) {
+        var ball = document.getElementById(element.id);
 
         ball.onmousedown = function (e) { // 1. отследить нажатие
 
@@ -54,6 +44,14 @@
             function moveAt(e) {
                     ball.style.left = e.pageX - ball.offsetWidth / 2 + 'px';
                     ball.style.top = e.pageY - ball.offsetHeight / 2 + 'px';
+                    $rootScope.$broadcast('segmentWereMoved', {
+                        elementId: e.currentTarget.id,
+                        position: {
+                            left: (e.pageX - ball.offsetWidth / 2) - self.elementStartOffset.left,
+                            top: (e.pageY - ball.offsetHeight / 2) - self.elementStartOffset.top
+                        }
+                    });
+
             }
 
             // 3, перемещать по экрану

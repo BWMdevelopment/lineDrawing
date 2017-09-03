@@ -13,6 +13,9 @@
             var success = response.data;
         });
     };
-
+    self.createElementForSegment = function (elementId, element, parentId) {
+        $("#" + parentId).
+            append("<div id='" + elementId + "' style='border-radius: 5px;width: 10px;background: white;position: absolute;height: 10px;top:" + element.Y + ";left:" + element.X + ";' />");
+    }
     return self;
 }]);

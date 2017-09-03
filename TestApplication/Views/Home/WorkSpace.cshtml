@@ -20,14 +20,20 @@
                 </div>
             </div>
         </div>
-        <div style="height:80%;width:100%">
-
-            <img id="element1" style="color:white;width:10px;height:10px; position:absolute" />
-            <img id="element2" style="color:white;width:10px;height:10px; position:absolute" />
+        <div style="height:80%;width:100%" id="segmewntWorkSpace">
         </div>
     </div>
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-
+    <hr id="line" style="
+    position: absolute;
+    top: 50px;
+    left: -100px;
+    width: 500px;
+    margin: 0;
+    -webkit-transform: rotateZ(53.1deg);
+    border-width: 1px;      border-style: solid;
+    border-image: linear-gradient(to left, #ffffff 0%,#ffffff 49%,#000000 50%,#000000 100%) 1;
+">
 </body>

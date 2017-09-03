@@ -33,6 +33,7 @@ namespace TestApplication
                         "~/Scripts/Angular/Factory/api-url-factory.js",
                         "~/Scripts/Angular/Service/SegmentService.js",
                         "~/Scripts/Angular/Service/MoveService.js",
+                        "~/Scripts/Angular/Service/LineService.js",
                         "~/Scripts/Angular/Controller/InterfaceController.js"));
         }
     }
