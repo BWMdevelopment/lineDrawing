@@ -2,22 +2,9 @@
 
     var self = {};
     self.elementsList = [];
-    self.elementStartOffset = {
-        left:0,
-        top:0
-    };
+
     self.init = function (pointsList) {
-        self.createBorders(pointsList[0].id);
         pointsList.forEach(self.prepearElement);
-    };
-    self.createBorders = function (id) {
-        var element = $('#' + id);
-        createLeftTopBorder(element)
-    };
-    createLeftTopBorder = function (element) {
-        var offsets = element.offset();
-        self.elementStartOffset.left = offsets.left;
-        self.elementStartOffset.top = offsets.top;
     };
     pow2 = function (n) {
         return n * n;
@@ -47,8 +34,8 @@
                     $rootScope.$broadcast('segmentWereMoved', {
                         elementId: e.currentTarget.id,
                         position: {
-                            left: (e.pageX - ball.offsetWidth / 2) - self.elementStartOffset.left,
-                            top: (e.pageY - ball.offsetHeight / 2) - self.elementStartOffset.top
+                            left: (e.pageX - ball.offsetWidth / 2),
+                            top: (e.pageY - ball.offsetHeight / 2)
                         }
                     });
 

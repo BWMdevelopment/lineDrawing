@@ -9,7 +9,7 @@
     };
     self.SaveSegmentOnServer = function (segmentData) {
         self.segmentData = segmentData;
-        $http.post(apiUrlFactory.SaveSegment, { pointsList: [{ X: 45, Y:15 }, { X:6, Y:85}]}, null).then(function (response) {
+        $http.post(apiUrlFactory.SaveSegment, { pointsList: self.segmentData}, null).then(function (response) {
             var success = response.data;
         });
     };

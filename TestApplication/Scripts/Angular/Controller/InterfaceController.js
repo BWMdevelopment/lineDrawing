@@ -2,7 +2,6 @@
     function ($scope, segmentService, $rootScope, moveService, lineService) {
         var self = this;
         self.segmentData = {};
-        isInitialized = false;
 
         self.init = function () {
             segmentService.GetSegmentFromServer();
@@ -18,14 +17,13 @@
 
         $rootScope.$on('segmentWereGetted', function (event, data) {
             self.segmentData = data;
-            if (!isInitialized) {
-                for (var i = 0; i < self.segmentData.CoordinatesList.length; i++) {
+            
+            for (var i = 0; i < self.segmentData.CoordinatesList.length; i++) {
+                    $("#element" + (i + 1)).remove();
                     segmentService.createElementForSegment('element' + (i + 1), self.segmentData.CoordinatesList[i], 'segmewntWorkSpace');
                     self.segmentData.CoordinatesList[i].id = 'element' + (i + 1);
                 };
                 lineService.appendLine(self.segmentData.CoordinatesList);
-                isInitialized = true;
-            }
             moveService.init(self.segmentData.CoordinatesList);
         });
 
