@@ -27,10 +27,15 @@ namespace TestApplication.Controllers
         {
             return View();
         }
+
+        public ActionResult WorkSpace()
+        {
+            return PartialView();
+        }
         public JsonResult SaveSegment(List<PointModel> pointsList)
         {
             List<Point> temp = new List<Point>();
-            pointsList.ForEach(x => temp.Add(new Point { X = x.X, Y = x.Y }));
+            pointsList.ForEach(convertFrom => temp.Add(convertFrom));
             Boolean result = coordinatesManager.SaveOrUpdatePoints(temp);
             return Json(null);
         }

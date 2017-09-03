@@ -2,5 +2,8 @@
     function ($scope) {
         var self = {};
         
+        self.init = function () {
+
+        }
         return self;
     }]);

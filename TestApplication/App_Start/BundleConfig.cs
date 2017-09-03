@@ -30,10 +30,10 @@ namespace TestApplication
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                         "~/Scripts/Angular/Core/angular.min.js",
                         "~/Scripts/Angular/app.js",
-                        "~/Scripts/Angular/Controller/InterfaceController.js",
-                        "~/Scripts/Angular/Controller/SegmentController.js",
                         "~/Scripts/Angular/Factory/api-url-factory.js",
-                        "~/Scripts/Angular/Service/SegmentService.js"));
+                        "~/Scripts/Angular/Service/SegmentService.js",
+                        "~/Scripts/Angular/Service/MoveService.js",
+                        "~/Scripts/Angular/Controller/InterfaceController.js"));
         }
     }
 }

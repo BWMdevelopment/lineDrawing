@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using TestApplication.BL.Managers.Abstract;
@@ -84,6 +85,7 @@ namespace TestApplication.BL.Managers.Concrete
         public Point GetRandomCoordinate()
         {
             Random r = new Random();
+            Thread.Sleep(10);
             return new Point
             {
                 X = r.Next(100),

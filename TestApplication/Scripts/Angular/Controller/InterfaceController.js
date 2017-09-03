@@ -1,10 +1,11 @@
-﻿angular.module('testApp').controller('interfaceController', ['$scope', 'segmentService', '$rootScope',
-    function ($scope, segmentService, $rootScope ) {
+﻿angular.module('testApp').controller('interfaceController', ['$scope', 'segmentService', '$rootScope', 'moveService',
+    function ($scope, segmentService, $rootScope, moveService) {
         var self = {};
         self.segmentData = {};
 
         self.init = function () {
             segmentService.GetSegmentFromServer();
+            moveService.init(['element1', 'element2']);
         };
 
         self.updateSegment = function () {

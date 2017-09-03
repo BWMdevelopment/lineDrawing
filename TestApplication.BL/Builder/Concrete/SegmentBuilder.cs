@@ -37,7 +37,6 @@ namespace TestApplication.BL.Builder.Concrete
                 HashSet <Point> temp = new HashSet<Point>();
                 for (int i = 0; i < 2; i++)
                 {
-
                     temp.Add(coordinatesManager.GetRandomCoordinate());
                 }
                 model.CoordinatesList = temp;
